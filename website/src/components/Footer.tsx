@@ -1,6 +1,37 @@
 import Link from "next/link";
 
-export default function Footer() {
+export interface FooterProps {
+  variant?: "full" | "minimal";
+}
+
+export default function Footer({ variant = "full" }: FooterProps) {
+  if (variant === "minimal") {
+    return (
+      <footer style={{ borderTop: "1px solid rgba(255,255,255,.08)", padding: "24px 0", background: "#070707" }}>
+        <div className="wrap">
+          <div className="footer-bottom" style={{ borderTop: "none", paddingTop: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+              <Link href="/" aria-label="MCast home" className="brand" style={{ minWidth: "auto" }}>
+                <img src="/assets/mcast-logo.png" alt="MCast" style={{ width: "110px", height: "auto" }} />
+              </Link>
+              <span>•</span>
+              <span>© 2026 MCast. Built for the Minecraft community.</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+              <Link href="/privacy-policy" style={{ color: "#aaa9a2" }} className="hover:text-[var(--yellow)] transition-colors">
+                Privacy Policy
+              </Link>
+              <span>•</span>
+              <Link href="/terms-of-service" style={{ color: "#aaa9a2" }} className="hover:text-[var(--yellow)] transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="reveal">
       <div className="wrap">
@@ -64,3 +95,4 @@ export default function Footer() {
     </footer>
   );
 }
+

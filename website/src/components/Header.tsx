@@ -3,8 +3,68 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function Header() {
+export interface HeaderProps {
+  variant?: "full" | "minimal";
+  badge?: string;
+  badgeType?: "default" | "success" | "error" | "warning";
+  backHref?: string;
+  backLabel?: string;
+}
+
+export default function Header({
+  variant = "full",
+  badge,
+  badgeType = "default",
+  backHref = "/",
+  backLabel = "← Homepage",
+}: HeaderProps) {
   const [open, setOpen] = useState(false);
+
+  if (variant === "minimal") {
+    return (
+      <header className="topbar">
+        <div className="wrap nav">
+          <Link className="brand" href="/" aria-label="MCast home">
+            <img src="/assets/mcast-logo.png" alt="MCast" />
+          </Link>
+          <div className="nav-actions" style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "12px" }}>
+            {badge && (
+              <span className="pill" style={{ fontSize: "0.76rem" }}>
+                <span
+                  className="live-dot"
+                  style={{
+                    width: "7px",
+                    height: "7px",
+                    background:
+                      badgeType === "success"
+                        ? "#22c55e"
+                        : badgeType === "error"
+                        ? "#ef4444"
+                        : "var(--yellow)",
+                    boxShadow:
+                      badgeType === "success"
+                        ? "0 0 0 3px rgba(34,197,94,.2)"
+                        : badgeType === "error"
+                        ? "0 0 0 3px rgba(239,68,68,.2)"
+                        : "0 0 0 3px rgba(255,229,0,.2)",
+                    animation: badgeType === "error" ? "none" : undefined,
+                  }}
+                />
+                {badge}
+              </span>
+            )}
+            <Link
+              className="btn btn-outline"
+              href={backHref}
+              style={{ padding: "8px 16px", fontSize: "0.82rem" }}
+            >
+              {backLabel}
+            </Link>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className="topbar">
@@ -68,3 +128,4 @@ export default function Header() {
     </header>
   );
 }
+

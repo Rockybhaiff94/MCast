@@ -3,7 +3,10 @@
 import React, { useEffect, useState, useCallback, Suspense } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import ConnectedChannelCard, { ChannelInfo, LiveStatusInfo } from '@/components/ConnectedChannelCard';
+import { Check, Gamepad2, ArrowRight } from 'lucide-react';
 
 function SuccessContent() {
   const params = useParams();
@@ -90,17 +93,32 @@ function SuccessContent() {
   return (
     <div className="w-full max-w-xl flex flex-col items-center">
       {/* Top Completion Banner */}
-      <div className="w-full bg-[#111111] border border-[#262626] rounded-2xl p-6 sm:p-8 text-center mb-6 shadow-2xl relative overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-48 h-48 bg-[#FF7A00]/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="w-16 h-16 rounded-full bg-[#FF7A00]/10 border-2 border-[#FF7A00] text-[#FF7A00] flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg shadow-[#FF7A00]/20">
-          ✓
+      <div
+        className="w-full text-center mb-6 relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(145deg, rgba(20,20,20,.96), rgba(10,10,10,.96))',
+          border: '1px solid var(--line)',
+          borderRadius: 'var(--radius)',
+          padding: 'clamp(24px, 4vw, 36px)',
+          boxShadow: '0 24px 70px rgba(0,0,0,0.5)',
+        }}
+      >
+        <div
+          className="w-16 h-16 rounded-full flex items-center justify-center text-2xl mx-auto mb-4"
+          style={{
+            background: 'rgba(34, 197, 94, 0.12)',
+            border: '2px solid rgba(34, 197, 94, 0.45)',
+            color: '#4ade80',
+            boxShadow: '0 0 24px rgba(34, 197, 94, 0.2)',
+          }}
+        >
+          <Check size={28} />
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
           Account Linked Successfully!
         </h1>
-        <p className="text-[#A3A3A3] text-sm leading-relaxed max-w-md mx-auto">
+        <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mx-auto m-0">
           Your YouTube account has been securely associated with your Minecraft streamer profile.
         </p>
       </div>
@@ -118,25 +136,40 @@ function SuccessContent() {
       />
 
       {/* In-Game Instructions */}
-      <div className="w-full bg-[#161616] border border-[#262626] rounded-xl p-4 mt-6 text-xs text-[#A3A3A3] text-left space-y-2">
-        <p className="font-bold text-white text-sm">🎮 What happens now?</p>
-        <p>
+      <div
+        className="w-full rounded-xl p-5 mt-6 text-xs text-left space-y-3"
+        style={{
+          background: 'rgba(16, 16, 16, 0.75)',
+          border: '1px solid var(--line)',
+          color: 'var(--muted)',
+        }}
+      >
+        <div className="flex items-center gap-2 text-white font-bold text-sm">
+          <Gamepad2 size={16} className="text-[var(--yellow)]" />
+          <span>What happens now?</span>
+        </div>
+        <p className="m-0 leading-relaxed">
           1. <strong className="text-white">Return to Minecraft:</strong> Your server will confirm the link in chat.
         </p>
-        <p>
+        <p className="m-0 leading-relaxed">
           2. <strong className="text-white">Start Streaming:</strong> Go live on YouTube with category <strong className="text-white">Gaming (Minecraft)</strong>.
         </p>
-        <p>
-          3. <strong className="text-white">Automatic LIVE Indicator:</strong> Your nametag and chat prefix will automatically show <span className="text-red-400 font-bold bg-red-950/60 px-1 py-0.5 rounded border border-red-500/30">LIVE</span>!
+        <p className="m-0 leading-relaxed">
+          3. <strong className="text-white">Automatic LIVE Indicator:</strong> Your in-game nametag will automatically display{' '}
+          <span className="text-red-400 font-bold bg-red-950/60 border border-red-500/30 px-1.5 py-0.5 rounded text-[11px]">
+            LIVE
+          </span>!
         </p>
       </div>
 
-      <div className="w-full mt-6 flex gap-3">
+      <div className="w-full mt-6">
         <Link
           href="/"
-          className="flex-1 bg-[#1f1f1f] hover:bg-[#2a2a2a] text-white font-medium py-3 px-6 rounded-xl transition-colors text-center text-sm"
+          className="btn btn-primary w-full"
+          style={{ justifyContent: 'center', padding: '13px 20px', fontSize: '0.92rem' }}
         >
-          Visit MCast Homepage
+          <span>Visit MCast Homepage</span>
+          <ArrowRight size={16} />
         </Link>
       </div>
     </div>
@@ -145,42 +178,41 @@ function SuccessContent() {
 
 export default function LinkSuccessPage() {
   return (
-    <div className="min-h-screen bg-[#080808] text-white flex flex-col justify-between selection:bg-[#FF7A00] selection:text-black">
-      {/* Header */}
-      <header className="border-b border-[#262626] bg-[#080808]/80 backdrop-blur-md px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-[#FF7A00] flex items-center justify-center font-bold text-black text-lg group-hover:bg-[#FF9500] transition-colors">
-            M
-          </div>
-          <span className="font-bold text-lg tracking-wider">
-            MCAST<span className="text-[#FF7A00]">.FUN</span>
-          </span>
-        </Link>
-        <span className="text-xs text-green-400 bg-green-950/40 border border-green-500/30 px-3 py-1 rounded-full font-medium">
-          ✓ Connected
-        </span>
-      </header>
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--white)] flex flex-col justify-between selection:bg-[var(--yellow)] selection:text-[#080808] relative overflow-hidden">
+      {/* Atmospheric subtle background glow */}
+      <div
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 50% 10%, rgba(34,197,94,0.06), transparent 55%), radial-gradient(circle at 80% 80%, rgba(255,229,0,0.03), transparent 45%)',
+        }}
+      />
 
-      {/* Main Success Card inside Suspense */}
-      <main className="flex-1 flex items-center justify-center px-4 py-12">
-        <Suspense fallback={<div className="text-[#A3A3A3] text-sm">Loading confirmation...</div>}>
+      {/* Modernized Minimal MCast Topbar */}
+      <Header
+        variant="minimal"
+        badge="Connected &amp; Verified"
+        badgeType="success"
+        backHref="/"
+        backLabel="← Homepage"
+      />
+
+      {/* Main Content Area */}
+      <main className="flex-1 flex items-center justify-center px-4 py-16 sm:py-24">
+        <Suspense
+          fallback={
+            <div className="text-[var(--muted)] text-sm animate-pulse">
+              Loading confirmation...
+            </div>
+          }
+        >
           <SuccessContent />
         </Suspense>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-[#262626] bg-[#080808] py-4 text-center text-xs text-[#737373] space-y-1.5">
-        <p>MCast LiveStatus • Centralized Minecraft Broadcast Synchronization • mcast.fun</p>
-        <div className="flex justify-center items-center gap-4 text-[11px] text-[#A3A3A3]">
-          <Link href="/privacy-policy" className="hover:text-[#FF7A00] transition-colors">
-            Privacy Policy
-          </Link>
-          <span>•</span>
-          <Link href="/terms-of-service" className="hover:text-[#FF7A00] transition-colors">
-            Terms of Service
-          </Link>
-        </div>
-      </footer>
+      {/* Modernized Minimal MCast Footer */}
+      <Footer variant="minimal" />
     </div>
   );
 }
+

@@ -54,12 +54,20 @@ export default function ConnectedChannelCard({
   // State 2: Account connected, channel information loading
   if (isLoading) {
     return (
-      <div className="w-full bg-[#111111] border border-[#262626] rounded-2xl p-6 sm:p-8 text-center animate-pulse">
-        <div className="w-20 h-20 bg-[#1f1f1f] rounded-full mx-auto mb-4"></div>
-        <div className="h-6 bg-[#1f1f1f] rounded-lg w-48 mx-auto mb-3"></div>
-        <div className="h-4 bg-[#1f1f1f] rounded-lg w-32 mx-auto mb-6"></div>
-        <div className="bg-[#080808] border border-[#262626] rounded-xl p-4 h-24 mb-4"></div>
-        <p className="text-xs text-[#A3A3A3]">Synchronizing connected channel & live status...</p>
+      <div
+        className="w-full text-center animate-pulse"
+        style={{
+          background: "linear-gradient(145deg, rgba(22,22,22,.95), rgba(12,12,12,.95))",
+          border: "1px solid var(--line)",
+          borderRadius: "var(--radius)",
+          padding: "clamp(24px, 4vw, 36px)",
+        }}
+      >
+        <div className="w-20 h-20 bg-white/5 rounded-full mx-auto mb-4"></div>
+        <div className="h-6 bg-white/5 rounded-lg w-48 mx-auto mb-3"></div>
+        <div className="h-4 bg-white/5 rounded-lg w-32 mx-auto mb-6"></div>
+        <div className="bg-black/40 border border-white/5 rounded-xl p-4 h-24 mb-4"></div>
+        <p className="text-xs text-[var(--muted)]">Synchronizing connected channel &amp; live status...</p>
       </div>
     );
   }
@@ -67,21 +75,31 @@ export default function ConnectedChannelCard({
   // State 5: Channel information unavailable due to an API error (when no channel data at all)
   if (error && !channel) {
     return (
-      <div className="w-full bg-[#111111] border border-red-500/30 rounded-2xl p-6 sm:p-8 text-center">
-        <div className="w-16 h-16 rounded-full bg-red-950/40 border border-red-500/40 text-red-400 flex items-center justify-center text-2xl mx-auto mb-4">
+      <div
+        className="w-full text-center"
+        style={{
+          background: "linear-gradient(145deg, rgba(26,14,14,.95), rgba(14,10,10,.95))",
+          border: "1px solid rgba(255, 52, 52, 0.35)",
+          borderRadius: "var(--radius)",
+          padding: "clamp(24px, 4vw, 36px)",
+          boxShadow: "0 18px 50px rgba(0,0,0,0.5)",
+        }}
+      >
+        <div className="w-16 h-16 rounded-full bg-red-950/50 border border-red-500/40 text-red-400 flex items-center justify-center text-2xl mx-auto mb-4">
           <AlertCircle size={32} />
         </div>
         <h2 className="text-xl font-bold text-white mb-2">Channel Information Unavailable</h2>
-        <p className="text-sm text-[#A3A3A3] mb-6 leading-relaxed">
+        <p className="text-sm text-[var(--muted)] mb-6 leading-relaxed max-w-md mx-auto">
           {error || 'Unable to retrieve your YouTube channel data. Please try again shortly.'}
         </p>
         {onRefresh && (
           <button
             onClick={onRefresh}
             disabled={isRefreshing}
-            className="inline-flex items-center gap-2 bg-[#FF7A00] hover:bg-[#FF9500] text-black font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+            className="btn btn-primary"
+            style={{ fontSize: "0.86rem", padding: "10px 20px" }}
           >
-            <RefreshCw size={16} className={isRefreshing ? 'animate-spin' : ''} />
+            <RefreshCw size={15} className={isRefreshing ? 'animate-spin' : ''} />
             <span>Retry Connection Check</span>
           </button>
         )}
@@ -92,12 +110,20 @@ export default function ConnectedChannelCard({
   // State 1: Account not connected
   if (!channel) {
     return (
-      <div className="w-full bg-[#111111] border border-[#262626] rounded-2xl p-6 sm:p-8 text-center">
-        <div className="w-16 h-16 rounded-full bg-[#1a1a1a] border border-[#333] text-[#A3A3A3] flex items-center justify-center mx-auto mb-4">
-          <YouTubeIcon className="w-8 h-8 text-[#A3A3A3]" />
+      <div
+        className="w-full text-center"
+        style={{
+          background: "linear-gradient(145deg, rgba(20,20,20,.95), rgba(10,10,10,.95))",
+          border: "1px solid var(--line)",
+          borderRadius: "var(--radius)",
+          padding: "clamp(24px, 4vw, 36px)",
+        }}
+      >
+        <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 text-[var(--muted)] flex items-center justify-center mx-auto mb-4">
+          <YouTubeIcon className="w-8 h-8 text-[var(--muted)]" />
         </div>
         <h2 className="text-xl font-bold text-white mb-2">No YouTube Account Connected</h2>
-        <p className="text-sm text-[#A3A3A3] mb-6 leading-relaxed">
+        <p className="text-sm text-[var(--muted)] mb-6 leading-relaxed max-w-md mx-auto">
           Connect your YouTube channel using a linking code from your Minecraft server.
         </p>
       </div>
@@ -110,20 +136,41 @@ export default function ConnectedChannelCard({
   const streamUrl = liveStatus?.stream_url || (liveStatus?.video_id ? `https://www.youtube.com/watch?v=${liveStatus.video_id}` : channelUrl);
 
   return (
-    <div className="w-full bg-[#111111] border border-[#262626] rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden text-left">
+    <div
+      className="w-full relative overflow-hidden text-left"
+      style={{
+        background: "linear-gradient(145deg, rgba(20,20,20,.97), rgba(11,11,11,.97))",
+        border: isLive ? "1px solid rgba(255, 52, 52, 0.45)" : "1px solid var(--line)",
+        borderRadius: "var(--radius)",
+        padding: "clamp(20px, 3.5vw, 32px)",
+        boxShadow: isLive ? "0 20px 60px rgba(255, 52, 52, 0.12), 0 10px 40px rgba(0,0,0,.6)" : "0 20px 60px rgba(0,0,0,0.45)",
+      }}
+    >
       {/* Dynamic ambient glow based on live status */}
       {isLive ? (
-        <div className="absolute -top-24 -right-24 w-56 h-56 bg-red-600/20 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+        <div className="absolute -top-24 -right-24 w-60 h-60 bg-red-600/15 rounded-full blur-3xl pointer-events-none animate-pulse" />
       ) : (
-        <div className="absolute -top-20 -right-20 w-48 h-48 bg-[#FF7A00]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -top-24 -right-24 w-52 h-52 bg-[var(--yellow)]/5 rounded-full blur-3xl pointer-events-none" />
       )}
 
       {/* Header bar: Connection Status & Refresh Action */}
-      <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#262626]">
+      <div
+        className="flex items-center justify-between pb-4 mb-6"
+        style={{ borderBottom: "1px solid var(--line)" }}
+      >
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-950/40 border border-green-500/30 text-green-400 text-xs font-semibold">
+          <span
+            className="pill"
+            style={{
+              background: "rgba(34, 197, 94, 0.12)",
+              borderColor: "rgba(34, 197, 94, 0.35)",
+              color: "#4ade80",
+              fontSize: "0.76rem",
+              padding: "6px 12px",
+            }}
+          >
             <CheckCircle2 size={13} />
-            <span>Connected & Synchronized</span>
+            <span>Connected &amp; Synchronized</span>
           </span>
         </div>
 
@@ -131,17 +178,24 @@ export default function ConnectedChannelCard({
           <button
             onClick={onRefresh}
             disabled={isRefreshing}
-            className="flex items-center gap-1.5 text-xs text-[#A3A3A3] hover:text-white bg-[#1a1a1a] hover:bg-[#262626] border border-[#333] px-3 py-1.5 rounded-lg transition-colors cursor-pointer disabled:opacity-50"
+            className="btn btn-outline"
+            style={{ padding: "6px 12px", fontSize: "0.75rem", gap: "6px" }}
             title="Check live status now"
           >
-            <RefreshCw size={13} className={isRefreshing ? 'animate-spin text-[#FF7A00]' : ''} />
+            <RefreshCw size={12} className={isRefreshing ? 'animate-spin text-[var(--yellow)]' : ''} />
             <span>{isRefreshing ? 'Checking...' : 'Refresh Status'}</span>
           </button>
         )}
       </div>
 
       {/* Channel Profile Box (Avatar, Name, Handle, Link) */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6 bg-[#080808] border border-[#262626] rounded-xl p-4">
+      <div
+        className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6 p-4 rounded-xl"
+        style={{
+          background: "rgba(8, 8, 8, 0.7)",
+          border: "1px solid var(--line)",
+        }}
+      >
         {/* Channel Avatar with Live indicator border */}
         <div className="relative shrink-0">
           {channel.avatar_url ? (
@@ -149,19 +203,23 @@ export default function ConnectedChannelCard({
               src={channel.avatar_url}
               alt={channel.channel_title}
               className={`w-20 h-20 rounded-full object-cover border-2 shadow-md ${
-                isLive ? 'border-red-500 ring-4 ring-red-500/20' : 'border-[#333]'
+                isLive ? 'border-red-500 ring-4 ring-red-500/25' : 'border-[var(--line)]'
               }`}
             />
           ) : (
-            <div className={`w-20 h-20 rounded-full bg-[#1c1c1c] border-2 flex items-center justify-center text-white text-2xl font-bold shadow-md ${
-              isLive ? 'border-red-500 ring-4 ring-red-500/20 text-red-500' : 'border-[#333]'
-            }`}>
+            <div
+              className={`w-20 h-20 rounded-full bg-[#181818] border-2 flex items-center justify-center text-white text-2xl font-bold shadow-md ${
+                isLive ? 'border-red-500 ring-4 ring-red-500/25 text-red-500' : 'border-[var(--line)]'
+              }`}
+            >
               {channel.channel_title.slice(0, 1).toUpperCase()}
             </div>
           )}
 
           {isLive && (
-            <span className="absolute -bottom-1 -right-1 bg-red-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded-md uppercase tracking-wider shadow">
+            <span
+              className="absolute -bottom-1 -right-1 bg-red-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded-md uppercase tracking-wider shadow"
+            >
               Live
             </span>
           )}
@@ -174,13 +232,13 @@ export default function ConnectedChannelCard({
               {channel.channel_title}
             </h3>
             {channel.custom_url && (
-              <span className="text-xs font-mono text-[#FF7A00] truncate">
+              <span className="text-xs font-mono text-[var(--yellow)] truncate font-semibold">
                 {channel.custom_url.startsWith('@') ? channel.custom_url : `@${channel.custom_url}`}
               </span>
             )}
           </div>
 
-          <p className="text-xs text-[#737373] font-mono mt-0.5 truncate">
+          <p className="text-xs text-[var(--muted)] font-mono mt-0.5 truncate">
             ID: {channel.channel_id}
           </p>
 
@@ -189,7 +247,8 @@ export default function ConnectedChannelCard({
               href={channelUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-[#A3A3A3] hover:text-[#FF7A00] transition-colors bg-[#141414] border border-[#262626] px-2.5 py-1 rounded-md"
+              className="pill hover:border-[var(--line-yellow)] hover:text-white transition-colors"
+              style={{ fontSize: "0.75rem", padding: "6px 11px" }}
             >
               <YouTubeIcon className="w-3.5 h-3.5 text-red-500" />
               <span>Visit YouTube Channel</span>
@@ -197,8 +256,8 @@ export default function ConnectedChannelCard({
             </a>
 
             {playerName && (
-              <span className="text-xs text-[#737373] bg-[#141414] border border-[#262626] px-2.5 py-1 rounded-md">
-                Player: <strong className="text-white font-medium">{playerName}</strong>
+              <span className="pill" style={{ fontSize: "0.75rem", padding: "6px 11px" }}>
+                Player: <strong className="text-white ml-1 font-semibold">{playerName}</strong>
               </span>
             )}
           </div>
@@ -208,22 +267,35 @@ export default function ConnectedChannelCard({
       {/* Live Status Presentation Card */}
       {/* State 4: Channel connected and live */}
       {isLive ? (
-        <div className="bg-red-950/30 border border-red-500/40 rounded-xl p-5 mb-6 shadow-inner">
+        <div
+          className="rounded-xl p-5 mb-6"
+          style={{
+            background: "linear-gradient(145deg, rgba(38,12,12,.8), rgba(20,8,8,.8))",
+            border: "1px solid rgba(255, 52, 52, 0.45)",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
+          }}
+        >
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-              </span>
+              <span className="live-dot" />
               <span className="text-red-400 font-extrabold text-sm tracking-wide uppercase">
                 Currently Live on YouTube
               </span>
             </div>
 
             {isMinecraft && (
-              <span className="inline-flex items-center gap-1 text-[11px] font-semibold bg-[#FF7A00]/15 text-[#FF7A00] border border-[#FF7A00]/30 px-2 py-0.5 rounded-md">
+              <span
+                className="pill"
+                style={{
+                  fontSize: "0.72rem",
+                  padding: "4px 9px",
+                  borderColor: "rgba(255, 229, 0, 0.4)",
+                  background: "rgba(255, 229, 0, 0.1)",
+                  color: "var(--yellow)",
+                }}
+              >
                 <Gamepad2 size={12} />
-                Minecraft Tag Active
+                <span>Minecraft Tag Active</span>
               </span>
             )}
           </div>
@@ -234,9 +306,15 @@ export default function ConnectedChannelCard({
             </h4>
           )}
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-red-500/20">
-            <span className="text-xs text-[#A3A3A3]">
-              Minecraft nametag displaying <span className="text-red-400 font-bold bg-red-950/60 px-1 py-0.5 rounded">LIVE</span>
+          <div
+            className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3"
+            style={{ borderTop: "1px solid rgba(255, 52, 52, 0.2)" }}
+          >
+            <span className="text-xs text-[var(--muted)]">
+              Minecraft nametag displaying{" "}
+              <span className="text-red-400 font-bold bg-red-950/60 border border-red-500/30 px-1.5 py-0.5 rounded text-[11px]">
+                LIVE
+              </span>
             </span>
 
             <a
@@ -252,28 +330,34 @@ export default function ConnectedChannelCard({
           </div>
         </div>
       ) : (
-        /* State 3: Channel connected and offline (Explicitly visible, never hidden) */
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-5 mb-6">
+        /* State 3: Channel connected and offline */
+        <div
+          className="rounded-xl p-5 mb-6"
+          style={{
+            background: "rgba(16, 16, 16, 0.75)",
+            border: "1px solid var(--line)",
+          }}
+        >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#525252]"></span>
-              <span className="text-[#A3A3A3] font-semibold text-xs tracking-wider uppercase">
+              <span className="text-[var(--muted)] font-semibold text-xs tracking-wider uppercase">
                 Channel Offline
               </span>
             </div>
             {liveStatus?.checked_at && (
-              <span className="text-[11px] text-[#525252]">
+              <span className="text-[11px] text-[var(--muted)]">
                 Checked {new Date(liveStatus.checked_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
               </span>
             )}
           </div>
 
-          <p className="text-xs text-[#8A8A8A] leading-relaxed">
-            No active YouTube live broadcast detected. When you go live on YouTube with category <strong className="text-white">Gaming (Minecraft)</strong>, MCast will automatically attach your <span className="text-red-400 font-bold">LIVE</span> nametag on <strong className="text-white">{serverName || 'your Minecraft server'}</strong>.
+          <p className="text-xs text-[var(--muted)] leading-relaxed m-0">
+            No active YouTube live broadcast detected. When you go live on YouTube with category <strong className="text-white">Gaming (Minecraft)</strong>, MCast will automatically attach your <span className="text-red-400 font-bold bg-red-950/40 border border-red-500/30 px-1 py-0.5 rounded">LIVE</span> nametag on <strong className="text-white">{serverName || 'your Minecraft server'}</strong>.
           </p>
 
           {liveStatus?.error && (
-            <div className="mt-3 p-2.5 rounded-lg bg-amber-950/20 border border-amber-500/20 text-[11px] text-amber-300">
+            <div className="mt-3 p-2.5 rounded-lg bg-amber-950/20 border border-amber-500/30 text-[11px] text-amber-200">
               Notice: {liveStatus.error}
             </div>
           )}
@@ -281,7 +365,13 @@ export default function ConnectedChannelCard({
       )}
 
       {/* Sub-card: Server & Player Context */}
-      <div className="bg-[#080808] border border-[#262626] rounded-xl p-3 text-xs text-[#737373] space-y-1.5">
+      <div
+        className="rounded-xl p-3.5 text-xs text-[var(--muted)] space-y-1.5"
+        style={{
+          background: "rgba(8, 8, 8, 0.6)",
+          border: "1px solid var(--line)",
+        }}
+      >
         <div className="flex justify-between items-center">
           <span>Target Minecraft Server:</span>
           <span className="text-white font-medium">{serverName || 'Minecraft Server'}</span>
@@ -296,3 +386,4 @@ export default function ConnectedChannelCard({
     </div>
   );
 }
+

@@ -31,7 +31,7 @@ export default function TermsOfServicePage() {
     <div className="min-h-screen bg-bg-primary text-text-primary flex flex-col selection:bg-accent selection:text-black">
       <Header />
 
-      <main className="flex-1 py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl space-y-10">
           {/* Top Breadcrumb & Heading */}
           <div className="border-b border-border pb-8">

@@ -3,6 +3,9 @@
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { AlertCircle, Terminal, ArrowRight } from 'lucide-react';
 
 function ErrorContent() {
   const searchParams = useSearchParams();
@@ -30,6 +33,10 @@ function ErrorContent() {
       title: 'Google Token Exchange Failed',
       desc: 'An error occurred while exchanging the authorization code with Google.',
     },
+    missing_refresh_token: {
+      title: 'Offline Access Consent Missing',
+      desc: 'Google did not return an offline refresh token. Please re-authorize and ensure offline access is consented.',
+    },
   };
 
   const info = reasonMap[reason] || {
@@ -38,32 +45,78 @@ function ErrorContent() {
   };
 
   return (
-    <div className="w-full max-w-lg bg-[#111111] border border-[#262626] rounded-2xl p-6 sm:p-8 shadow-2xl text-center relative overflow-hidden">
-      <div className="w-16 h-16 rounded-full bg-red-950/50 border border-red-500/30 text-red-400 flex items-center justify-center text-2xl mx-auto mb-4">
-        ✕
+    <div
+      className="w-full max-w-lg text-center relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(145deg, rgba(24,14,14,.96), rgba(12,10,10,.96))',
+        border: '1px solid rgba(255, 52, 52, 0.35)',
+        borderRadius: 'var(--radius)',
+        padding: 'clamp(24px, 4vw, 36px)',
+        boxShadow: '0 24px 70px rgba(0,0,0,0.5)',
+      }}
+    >
+      <div
+        className="w-16 h-16 rounded-full flex items-center justify-center text-2xl mx-auto mb-4"
+        style={{
+          background: 'rgba(255, 52, 52, 0.12)',
+          border: '2px solid rgba(255, 52, 52, 0.45)',
+          color: '#ff6b6b',
+          boxShadow: '0 0 24px rgba(255, 52, 52, 0.2)',
+        }}
+      >
+        <AlertCircle size={30} />
       </div>
 
-      <h1 className="text-2xl font-bold text-white mb-2">{info.title}</h1>
-      <p className="text-sm text-[#A3A3A3] mb-6 leading-relaxed">{info.desc}</p>
+      <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight">
+        {info.title}
+      </h1>
+      <p className="text-sm text-[var(--muted)] mb-6 leading-relaxed m-0">
+        {info.desc}
+      </p>
 
       {details && (
-        <div className="bg-[#080808] border border-[#262626] rounded-xl p-3 text-xs font-mono text-red-400 mb-6 text-left break-all">
+        <div
+          className="rounded-xl p-3 text-xs font-mono mb-6 text-left break-all"
+          style={{
+            background: 'rgba(10, 10, 10, 0.8)',
+            border: '1px solid rgba(255, 52, 52, 0.25)',
+            color: '#ff8a8a',
+          }}
+        >
           Error details: {details}
         </div>
       )}
 
-      <div className="bg-[#161616] border border-[#262626] rounded-xl p-4 mb-6 text-xs text-[#A3A3A3] text-left space-y-2">
-        <p className="font-semibold text-white">How to resolve:</p>
-        <p>1. Open Minecraft and reconnect to your server.</p>
-        <p>2. Execute <code className="text-[#FF7A00] bg-[#1a1a1a] px-1.5 py-0.5 rounded">/link youtube</code> in chat.</p>
-        <p>3. Click the new link and ensure you grant the requested YouTube permissions.</p>
+      <div
+        className="rounded-xl p-4 mb-6 text-xs text-left space-y-2"
+        style={{
+          background: 'rgba(16, 16, 16, 0.7)',
+          border: '1px solid var(--line)',
+          color: 'var(--muted)',
+        }}
+      >
+        <div className="flex items-center gap-1.5 font-bold text-white text-xs">
+          <Terminal size={14} className="text-[var(--yellow)]" />
+          <span>How to resolve:</span>
+        </div>
+        <p className="m-0 leading-relaxed">1. Open Minecraft and reconnect to your server.</p>
+        <p className="m-0 leading-relaxed">
+          2. Execute{' '}
+          <code style={{ color: 'var(--yellow)', background: '#20200a', border: '1px solid #41400b', padding: '1px 6px', borderRadius: '4px' }}>
+            /link youtube
+          </code>{' '}
+          in chat.
+        </p>
+        <p className="m-0 leading-relaxed">3. Click the new link and ensure you grant the requested YouTube permissions.</p>
       </div>
 
       <Link
         href="/"
-        className="inline-block w-full bg-[#1f1f1f] hover:bg-[#2a2a2a] text-white font-medium py-3 px-6 rounded-xl transition-colors text-sm"
+        className="btn btn-primary w-full"
+        style={{ justifyContent: 'center', padding: '13px 20px', fontSize: '0.92rem' }}
       >
-        Back to MCast Homepage
+        <span>Back to MCast Homepage</span>
+        <ArrowRight size={16} />
       </Link>
     </div>
   );
@@ -71,42 +124,41 @@ function ErrorContent() {
 
 export default function LinkErrorPage() {
   return (
-    <div className="min-h-screen bg-[#080808] text-white flex flex-col justify-between selection:bg-[#FF7A00] selection:text-black">
-      {/* Header */}
-      <header className="border-b border-[#262626] bg-[#080808]/80 backdrop-blur-md px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-[#FF7A00] flex items-center justify-center font-bold text-black text-lg group-hover:bg-[#FF9500] transition-colors">
-            M
-          </div>
-          <span className="font-bold text-lg tracking-wider">
-            MCAST<span className="text-[#FF7A00]">.FUN</span>
-          </span>
-        </Link>
-        <span className="text-xs text-red-400 bg-red-950/40 border border-red-500/30 px-3 py-1 rounded-full font-medium">
-          Connection Alert
-        </span>
-      </header>
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--white)] flex flex-col justify-between selection:bg-[var(--yellow)] selection:text-[#080808] relative overflow-hidden">
+      {/* Atmospheric subtle background glow */}
+      <div
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 50% 10%, rgba(255,52,52,0.06), transparent 55%), radial-gradient(circle at 80% 80%, rgba(255,229,0,0.03), transparent 45%)',
+        }}
+      />
 
-      {/* Main Content inside Suspense */}
-      <main className="flex-1 flex items-center justify-center px-4 py-12">
-        <Suspense fallback={<div className="text-[#A3A3A3] text-sm">Loading details...</div>}>
+      {/* Modernized Minimal MCast Topbar */}
+      <Header
+        variant="minimal"
+        badge="Connection Alert"
+        badgeType="error"
+        backHref="/"
+        backLabel="← Homepage"
+      />
+
+      {/* Main Content Area */}
+      <main className="flex-1 flex items-center justify-center px-4 py-16 sm:py-24">
+        <Suspense
+          fallback={
+            <div className="text-[var(--muted)] text-sm animate-pulse">
+              Loading details...
+            </div>
+          }
+        >
           <ErrorContent />
         </Suspense>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-[#262626] bg-[#080808] py-4 text-center text-xs text-[#737373] space-y-1.5">
-        <p>MCast LiveStatus • Centralized Minecraft Broadcast Synchronization • mcast.fun</p>
-        <div className="flex justify-center items-center gap-4 text-[11px] text-[#A3A3A3]">
-          <Link href="/privacy-policy" className="hover:text-[#FF7A00] transition-colors">
-            Privacy Policy
-          </Link>
-          <span>•</span>
-          <Link href="/terms-of-service" className="hover:text-[#FF7A00] transition-colors">
-            Terms of Service
-          </Link>
-        </div>
-      </footer>
+      {/* Modernized Minimal MCast Footer */}
+      <Footer variant="minimal" />
     </div>
   );
 }
+
