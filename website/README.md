@@ -6,7 +6,7 @@ Official landing page and web presence for **MCast.fun** (LiveStatus), a Minecra
 
 ## Features
 
-- **Black + Orange Aesthetic**: Tailored gaming theme (`#080808`, `#111111`, `#FF7A00`) with subtle glows and clean borders.
+- **MCast Cinematic Aesthetic**: Tailored gaming theme (`#080808`, `#101010`, `#FFE500`) with subtle ambient glows, voxel scene artwork, and clean borders.
 - **Interactive Nametag Preview**: Real-time mock of in-game player list with pulsing `LIVE` badge indicator.
 - **Responsive Layout**: Optimized for mobile, tablet, and desktop viewports.
 - **Zero-Latency Fonts**: Self-hosted `Inter` font via `next/font/google`.
