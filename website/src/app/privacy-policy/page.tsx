@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Official Privacy Policy for MCast LiveStatus. Details data collection, AES-256-GCM token encryption, YouTube Data API usage, and Google API Services User Data Policy compliance.",
   alternates: {
-    canonical: "https://mcast.fun/privacy-policy",
+    canonical: "https://www.mcast.fun/privacy-policy",
   },
   robots: {
     index: true,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy",
     description:
       "Official Privacy Policy for MCast LiveStatus. Learn how we protect creator data and comply with Google API Services User Data Policy.",
-    url: "https://mcast.fun/privacy-policy",
+    url: "https://www.mcast.fun/privacy-policy",
     type: "website",
   },
 };

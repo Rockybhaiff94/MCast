@@ -8,7 +8,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mcast.fun"),
+  metadataBase: new URL("https://www.mcast.fun"),
   title: {
     default: "MCast – YouTube Live Status Plugin for Minecraft",
     template: "%s | MCast",
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     "MCast",
   ],
   alternates: {
-    canonical: "https://mcast.fun",
+    canonical: "https://www.mcast.fun",
   },
   openGraph: {
     title: "MCast – YouTube Live Status Plugin for Minecraft",
     description:
       "Discover MCast, a Minecraft plugin that connects YouTube streamers with their Minecraft servers. Show live streaming status and make your SMP more streamer-friendly.",
     type: "website",
-    url: "https://mcast.fun",
+    url: "https://www.mcast.fun",
     siteName: "MCast",
   },
   twitter: {
