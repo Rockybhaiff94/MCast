@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "Official Terms of Service for MCast LiveStatus. Details usage conditions, YouTube API integration terms, streamer responsibilities, and service disclaimers.",
   alternates: {
-    canonical: "https://mcast.fun/terms-of-service",
+    canonical: "https://www.mcast.fun/terms-of-service",
   },
   robots: {
     index: true,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "Terms of Service",
     description:
       "Official Terms of Service for MCast LiveStatus. Understand streamer responsibilities, YouTube API terms, and acceptable usage.",
-    url: "https://mcast.fun/terms-of-service",
+    url: "https://www.mcast.fun/terms-of-service",
     type: "website",
   },
 };

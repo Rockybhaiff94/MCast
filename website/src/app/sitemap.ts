@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://mcast.fun";
+  const baseUrl = "https://www.mcast.fun";
 
   return [
     {
@@ -24,4 +24,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
-

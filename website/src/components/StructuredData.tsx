@@ -3,7 +3,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "MCast",
-    url: "https://mcast.fun",
+    url: "https://www.mcast.fun",
     description:
       "MCast is a Minecraft plugin that connects YouTube streaming with Minecraft servers, showing live streaming status in-game.",
   };
@@ -12,7 +12,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "MCast",
-    url: "https://mcast.fun",
+    url: "https://www.mcast.fun",
     applicationCategory: "GameApplication",
     operatingSystem: "Java",
     description:

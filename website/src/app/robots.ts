@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/dashboard", "/link/"],
       },
     ],
-    sitemap: "https://mcast.fun/sitemap.xml",
+    sitemap: "https://www.mcast.fun/sitemap.xml",
   };
 }
-
