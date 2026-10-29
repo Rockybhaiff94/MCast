@@ -40,7 +40,7 @@ export default function Footer({ variant = "full" }: FooterProps) {
             <Link href="/" aria-label="MCast home">
               <img src="/assets/mcast-logo.png" alt="MCast" />
             </Link>
-            <p>Show your YouTube Live status in Minecraft. Less friction, more community.</p>
+            <p>YouTube live streaming status plugin for Minecraft servers. Your stream. Your server. Connected.</p>
           </div>
           <div className="footer-col">
             <h4>Explore</h4>
