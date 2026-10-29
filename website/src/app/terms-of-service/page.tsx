@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { FileText, Shield, ExternalLink, CheckCircle2, Scale, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — MCast.fun",
+  title: "Terms of Service",
   description:
     "Official Terms of Service for MCast LiveStatus. Details usage conditions, YouTube API integration terms, streamer responsibilities, and service disclaimers.",
   alternates: {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Terms of Service — MCast.fun",
+    title: "Terms of Service",
     description:
       "Official Terms of Service for MCast LiveStatus. Understand streamer responsibilities, YouTube API terms, and acceptable usage.",
     url: "https://mcast.fun/terms-of-service",

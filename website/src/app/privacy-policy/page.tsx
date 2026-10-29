@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Shield, Key, ExternalLink, RefreshCw, Trash2, Mail, Lock, CheckCircle2, AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — MCast.fun",
+  title: "Privacy Policy",
   description:
     "Official Privacy Policy for MCast LiveStatus. Details data collection, AES-256-GCM token encryption, YouTube Data API usage, and Google API Services User Data Policy compliance.",
   alternates: {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Privacy Policy — MCast.fun",
+    title: "Privacy Policy",
     description:
       "Official Privacy Policy for MCast LiveStatus. Learn how we protect creator data and comply with Google API Services User Data Policy.",
     url: "https://mcast.fun/privacy-policy",

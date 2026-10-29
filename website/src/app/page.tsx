@@ -198,14 +198,14 @@ export default function Home() {
         <section className="hero" id="home">
           <div className="wrap hero-grid">
             <div className="hero-copy">
-              <div className="eyebrow hero-anim-1">Bring your stream to the server</div>
+              <div className="eyebrow hero-anim-1">YouTube streaming plugin for Minecraft servers</div>
               <h1 className="hero-anim-2">
-                <span className="line">Show when</span>
-                <span className="line accent">you&apos;re live.</span>
-                <span className="line">In Minecraft.</span>
+                <span className="line">Stream on YouTube.</span>
+                <span className="line accent">Show up</span>
+                <span className="line">in Minecraft.</span>
               </h1>
               <p className="hero-anim-3">
-                MCast brings your YouTube Live status into Minecraft, so your community can see when you&apos;re streaming—right in your in-game name tag.
+                MCast connects YouTube streaming with your Minecraft server, helping your SMP community discover creators who are live and making your server more streamer-friendly.
               </p>
               <div className="hero-actions hero-anim-4">
                 <a className="btn btn-primary" href="#download" onClick={handleDownload}>
@@ -352,7 +352,7 @@ export default function Home() {
                 Small plugin. <span className="accent">Big connection.</span>
               </h2>
               <p>
-                Give your Minecraft community a simple way to spot when a creator is live, without pulling everyone out of the game.
+                Give your Minecraft community a simple way to spot when a YouTube creator is streaming live, without pulling everyone out of the game.
               </p>
             </div>
             <div className="feature-grid reveal-stagger">
@@ -444,7 +444,7 @@ export default function Home() {
                 Your stream belongs <span className="accent">in the world.</span>
               </h2>
               <p>
-                MCast is a Minecraft plugin concept built around one simple idea: when you&apos;re live on YouTube, your server can show that status next to your Minecraft name. It helps friends and viewers discover the stream while they play.
+                MCast is a Minecraft plugin that connects YouTube streaming with your server. When you&apos;re live on YouTube, your server shows that status next to your Minecraft name, helping friends and viewers discover the stream while they play.
               </p>
               <div className="about-points">
                 <div className="about-point">
@@ -882,7 +882,7 @@ export default function Home() {
                   Ready to bring MCast <span className="accent">to your server?</span>
                 </h2>
                 <p>
-                  Make your server a little more connected. Add MCast, link your channel, and let your community know when the stream is on.
+                  Make your Minecraft server more streamer-friendly. Add MCast, link your YouTube channel, and let your community know when the stream is on.
                 </p>
                 <div className="hero-actions" style={{ marginBottom: 0 }}>
                   <button className="btn btn-primary" onClick={handleDownload}>
@@ -937,7 +937,7 @@ export default function Home() {
               <a href="#home">
                 <img src="/assets/mcast-logo.png" alt="MCast" />
               </a>
-              <p>Show your YouTube Live status in Minecraft. Less friction, more community.</p>
+              <p>YouTube live streaming status plugin for Minecraft servers. Your stream. Your server. Connected.</p>
             </div>
             <div className="footer-col">
               <h4>Explore</h4>

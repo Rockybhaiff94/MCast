@@ -2,29 +2,47 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MCast — Bring Your Stream Into Minecraft",
+  metadataBase: new URL("https://mcast.fun"),
+  title: {
+    default: "MCast – YouTube Live Status Plugin for Minecraft",
+    template: "%s | MCast",
+  },
   description:
-    "MCast brings your YouTube Live status into Minecraft, helping your community spot when you are streaming right in-game.",
+    "Discover MCast, a Minecraft plugin that connects YouTube streamers with their Minecraft servers. Show live streaming status, link YouTube channels, and make your SMP more streamer-friendly.",
   keywords: [
-    "Minecraft",
-    "live",
-    "streaming",
-    "YouTube",
-    "Paper plugin",
-    "nametag",
+    "Minecraft YouTube plugin",
+    "Minecraft streaming plugin",
+    "YouTube live status Minecraft",
+    "Minecraft streamer plugin",
+    "Minecraft SMP streaming",
     "MCast",
   ],
+  alternates: {
+    canonical: "https://mcast.fun",
+  },
   openGraph: {
-    title: "MCast — Bring Your Stream Into Minecraft",
+    title: "MCast – YouTube Live Status Plugin for Minecraft",
     description:
-      "MCast brings your YouTube Live status into Minecraft, helping your community spot when you are streaming right in-game.",
+      "Discover MCast, a Minecraft plugin that connects YouTube streamers with their Minecraft servers. Show live streaming status and make your SMP more streamer-friendly.",
     type: "website",
     url: "https://mcast.fun",
+    siteName: "MCast",
+  },
+  twitter: {
+    card: "summary",
+    title: "MCast – YouTube Live Status Plugin for Minecraft",
+    description:
+      "A Minecraft plugin that shows YouTube live streaming status in-game. Connect your channel and let your community know when you're live.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -36,6 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head suppressHydrationWarning>
+        <StructuredData />
         <script
           dangerouslySetInnerHTML={{
             __html: `
