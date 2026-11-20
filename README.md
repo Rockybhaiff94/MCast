@@ -116,12 +116,12 @@ Build the Paper plugin JAR using the Gradle wrapper:
 
 The compiled plugin JAR is located at:
 ```text
-build/libs/LiveStatus-1.0.0.jar
+build/libs/Mcast livestatus-1.0.0.jar
 ```
 
 ### 2. Install on Paper Server
 
-1. Drop `LiveStatus-1.0.0.jar` into your Minecraft server's `plugins/` directory.
+1. Drop `Mcast livestatus-1.0.0.jar` into your Minecraft server's `plugins/` directory.
 2. Start the server. The plugin automatically generates `plugins/LiveStatus/config.yml` pre-configured for the centralized MCast service.
 
 ### 3. Link YouTube Account

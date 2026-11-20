@@ -42,7 +42,7 @@ tasks.test {
 }
 
 tasks.jar {
-    archiveBaseName.set("LiveStatus")
+    archiveBaseName.set("Mcast livestatus")
     archiveClassifier.set("")
     archiveVersion.set("1.0.0")
 }

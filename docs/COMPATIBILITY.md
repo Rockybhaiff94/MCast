@@ -2,7 +2,7 @@
 
 > **You only need one Paper plugin JAR.**
 >
-> All nametag rendering, scoreboard management, and PlaceholderAPI expansions run directly within `LiveStatus-1.0.0.jar`.
+> All nametag rendering, scoreboard management, and PlaceholderAPI expansions run directly within `Mcast livestatus-1.0.0.jar`.
 
 ---
 

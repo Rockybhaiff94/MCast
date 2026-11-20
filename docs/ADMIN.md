@@ -2,7 +2,7 @@
 
 > **You only need one Paper plugin JAR.**
 >
-> All administrative commands, storage, and YouTube queries run directly within `LiveStatus-1.0.0.jar`.
+> All administrative commands, storage, and YouTube queries run directly within `Mcast livestatus-1.0.0.jar`.
 
 ---
 
