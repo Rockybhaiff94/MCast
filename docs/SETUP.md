@@ -2,7 +2,7 @@
 
 > **You only need one Paper plugin JAR.**
 >
-> There is **NO** separate backend process, **NO** backend JAR, **NO** backend URL, **NO** external API key, and **NO** second plugin. Everything runs directly inside `LiveStatus-1.0.0.jar` on your Minecraft Paper server.
+> There is **NO** separate backend process, **NO** backend JAR, **NO** backend URL, **NO** external API key, and **NO** second plugin. Everything runs directly inside `Mcast livestatus-1.0.0.jar` on your Minecraft Paper server.
 
 ---
 
@@ -30,7 +30,7 @@ Run the build from the project root:
 
 The build compiles the plugin, runs the complete automated test suite, and outputs the single self-contained plugin JAR:
 ```text
-build/libs/LiveStatus-1.0.0.jar
+build/libs/Mcast livestatus-1.0.0.jar
 ```
 
 ---
@@ -38,10 +38,10 @@ build/libs/LiveStatus-1.0.0.jar
 ## 3. Installation on Paper Server
 
 1. **Copy the JAR**:
-   Copy `build/libs/LiveStatus-1.0.0.jar` into your Paper server's `plugins/` directory:
+   Copy `build/libs/Mcast livestatus-1.0.0.jar` into your Paper server's `plugins/` directory:
    ```text
    plugins/
-   └── LiveStatus-1.0.0.jar
+   └── Mcast livestatus-1.0.0.jar
    ```
 
 2. **Start the Paper server**:
