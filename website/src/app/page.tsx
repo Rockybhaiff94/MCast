@@ -107,17 +107,20 @@ export default function Home() {
     }));
   };
 
+  const DIRECT_DOWNLOAD_URL =
+    "https://github.com/Rockybhaiff94/MCast/releases/download/Minecraft/Mcast.livestatus.jar";
+
   const handleDownload = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
     const configUrl =
       (typeof window !== "undefined" && (window as any).MCAST_CONFIG?.downloadUrl) ||
       process.env.NEXT_PUBLIC_DOWNLOAD_URL ||
-      "";
+      DIRECT_DOWNLOAD_URL;
 
     if (configUrl && /^https?:\/\//i.test(configUrl)) {
       window.location.assign(configUrl);
     } else {
-      window.alert("Connect your official MCast release URL in site configuration to enable downloads.");
+      window.location.assign(DIRECT_DOWNLOAD_URL);
     }
   };
 
@@ -156,7 +159,12 @@ export default function Home() {
             </a>
           </nav>
           <div className="nav-actions">
-            <a className="btn btn-primary" href="#download" onClick={handleDownload}>
+            <a
+              className="btn btn-primary"
+              href="https://github.com/Rockybhaiff94/MCast/releases/download/Minecraft/Mcast.livestatus.jar"
+              download="Mcast.livestatus.jar"
+              onClick={handleDownload}
+            >
               Get MCast{" "}
               <svg
                 viewBox="0 0 24 24"
@@ -208,7 +216,12 @@ export default function Home() {
                 MCast connects YouTube streaming with your Minecraft server, helping your SMP community discover creators who are live and making your server more streamer-friendly.
               </p>
               <div className="hero-actions hero-anim-4">
-                <a className="btn btn-primary" href="#download" onClick={handleDownload}>
+                <a
+                  className="btn btn-primary"
+                  href="https://github.com/Rockybhaiff94/MCast/releases/download/Minecraft/Mcast.livestatus.jar"
+                  download="Mcast.livestatus.jar"
+                  onClick={handleDownload}
+                >
                   Get MCast{" "}
                   <svg
                     viewBox="0 0 24 24"
@@ -885,7 +898,12 @@ export default function Home() {
                   Make your Minecraft server more streamer-friendly. Add MCast, link your YouTube channel, and let your community know when the stream is on.
                 </p>
                 <div className="hero-actions" style={{ marginBottom: 0 }}>
-                  <button className="btn btn-primary" onClick={handleDownload}>
+                  <a
+                    className="btn btn-primary"
+                    href="https://github.com/Rockybhaiff94/MCast/releases/download/Minecraft/Mcast.livestatus.jar"
+                    download="Mcast.livestatus.jar"
+                    onClick={handleDownload}
+                  >
                     Download MCast{" "}
                     <svg
                       viewBox="0 0 24 24"
@@ -898,7 +916,7 @@ export default function Home() {
                       <path d="M12 3v12m-5-5 5 5 5-5" />
                       <path d="M5 16v4h14v-4" />
                     </svg>
-                  </button>
+                  </a>
                   <a className="btn btn-outline" href="#setup">
                     Read setup guide
                   </a>
@@ -950,7 +968,11 @@ export default function Home() {
               <h4>Resources</h4>
               <a href="#setup">Quick setup</a>
               <a href="#faq">FAQ</a>
-              <a href="#download" onClick={handleDownload}>
+              <a
+                href="https://github.com/Rockybhaiff94/MCast/releases/download/Minecraft/Mcast.livestatus.jar"
+                download="Mcast.livestatus.jar"
+                onClick={handleDownload}
+              >
                 Download
               </a>
               <a href="#commands">Command list</a>

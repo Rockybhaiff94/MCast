@@ -90,7 +90,11 @@ export default function Header({
           </Link>
         </nav>
         <div className="nav-actions">
-          <Link className="btn btn-primary" href="/#download">
+          <a
+            className="btn btn-primary"
+            href="https://github.com/Rockybhaiff94/MCast/releases/download/Minecraft/Mcast.livestatus.jar"
+            download="Mcast.livestatus.jar"
+          >
             Get MCast{" "}
             <svg
               viewBox="0 0 24 24"
@@ -104,7 +108,7 @@ export default function Header({
               <path d="M12 3v12m-5-5 5 5 5-5" />
               <path d="M5 16v4h14v-4" />
             </svg>
-          </Link>
+          </a>
           <button
             className="menu-toggle"
             id="menu-toggle"

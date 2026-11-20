@@ -53,7 +53,12 @@ export default function Footer({ variant = "full" }: FooterProps) {
             <h4>Resources</h4>
             <Link href="/#setup">Quick setup</Link>
             <Link href="/#faq">FAQ</Link>
-            <Link href="/#download">Download</Link>
+            <a
+              href="https://github.com/Rockybhaiff94/MCast/releases/download/Minecraft/Mcast.livestatus.jar"
+              download="Mcast.livestatus.jar"
+            >
+              Download
+            </a>
             <Link href="/#commands">Command list</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/terms-of-service">Terms of Service</Link>
